@@ -1,0 +1,17 @@
+name: test workflow
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  infra_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: conftest
+        run: |
+          wget https://github.com/open-policy-agent/conftest/releases/download/v0.21.0/conftest_0.21.0_Linux_x86_64.tar.gz
+          tar xzf conftest_0.21.0_Linux_x86_64.tar.gz
+          sudo mv conftest /usr/local/bin
+          conftest test ./deployemnt.yaml
