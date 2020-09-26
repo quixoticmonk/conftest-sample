@@ -1,8 +1,5 @@
 name: test workflow
 
-on:
-  push:
-    branches: [ master ]
 
 jobs:
   infra_scan:
